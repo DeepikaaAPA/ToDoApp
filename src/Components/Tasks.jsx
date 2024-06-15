@@ -26,10 +26,18 @@ export function Tasks() {
 function TaskList() {
   return (
     <>
-      <div class="container">
-        {tasks.map((task,index)=><TaskCard id= {index} task={task}></TaskCard>)}
+      <div className="container">
+        {tasks.map((task, index) => (
+          <TaskCard id={index} task={task}></TaskCard>
+        ))}
       </div>
     </>
   );
 }
+function TaskCard({index, task }) {
+  return (
 
+      <div  className="task-card">taskcard</div>
+    
+  );
+}

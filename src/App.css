@@ -9,15 +9,22 @@
   gap: 20px;
   justify-content: space-evenly;
 }
-#container{
-  
+.container{
+
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   gap:20px;
   padding:2rem;
   background-color: gray;
   
+}
+.task-card{
+  width: 250px;
+  height: 300px;
+background-color: aquamarine;
+color:rgb(4, 64, 44);
 }
 #tasks-header {
   padding: 1rem;
