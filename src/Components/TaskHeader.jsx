@@ -9,13 +9,11 @@ export function TaskHeader() {
           <h5>
             {" "}
             <label>Status </label>
-            
             <select id="status-filter">
-              <option>All</option>
-              <option>Pending</option>
-              <option>Completed</option>
+              <option value="All">All</option>
+              <option value="Pending">Pending</option>
+              <option value="Completed">Completed</option>
             </select>
-           
           </h5>
         </div>
       </div>

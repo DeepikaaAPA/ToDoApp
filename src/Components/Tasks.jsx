@@ -1,4 +1,4 @@
-import { Form } from "./Form";
+import { useState } from "react";
 import { TaskHeader } from "./TaskHeader";
 let taskslist = [
   { name: "Planting", desc: "plan tseeds ", status: "Pending" },
@@ -42,23 +42,36 @@ function TaskList() {
 
 function TaskCard({ key, task }) {
   console.log(key, typeof key);
-  const bgcolor=task.status=="Completed"?"green":"yellow";
+  const bgcolor = task.status == "Completed" ? "green" : "orange";
+  let [statusBg, setStatusBg] = useState(bgcolor);
+
   return (
     <div className="task-card">
       <h4>{task.name}</h4>
       <p>{task.desc}</p>
-
-      {task.status == "Completed" ? (
-        <select style={{backgroundColor:"green"}}>
-          <option value="Completed" selected>Completed</option>
-          <option value="Pending">Pending</option>
-        </select>
-      ) : (
-        <select style={{backgroundColor:"yellow"}}>
-          <option  value="Completed">Completed</option>
-          <option  value="Pending" selected>Pending</option>
-        </select>
-      )}
+      <select
+        onChange={(event) => {
+          setStatusBg(event.target.value == "Completed" ? "green" : "orange");
+          
+        }}
+        style={{ backgroundColor: statusBg }}
+      >
+        {task.status == "Completed" ? (
+          <>
+            <option value="Completed" selected>
+              Completed
+            </option>
+            <option value="Pending">Pending</option>
+          </>
+        ) : (
+          <>
+            <option value="Completed">Completed</option>
+            <option value="Pending" selected>
+              Pending
+            </option>
+          </>
+        )}
+      </select>
     </div>
   );
 }
