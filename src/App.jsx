@@ -1,8 +1,9 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 import { Header } from './Components/Header'
+import { Form } from './Components/Form'
+import { Tasks } from './Components/Tasks'
+
 function App() {
 
 
@@ -10,7 +11,7 @@ function App() {
     <>
       <Header/>
        <Form/>
-     {/*} <Tasks></Tasks> */}
+      <Tasks></Tasks> 
     </>
   )
 }
