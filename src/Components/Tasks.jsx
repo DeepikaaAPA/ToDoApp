@@ -1,6 +1,6 @@
 import { Form } from "./Form";
 import { TaskHeader } from "./TaskHeader";
-let tasks = [
+let taskslist = [
   { name: "Planting", desc: "plan tseeds ", status: "Pending" },
   { name: "Mopping", desc: "mop the floors ", status: "Pending" },
   {
@@ -24,20 +24,28 @@ export function Tasks() {
   );
 }
 function TaskList() {
+  console.log(
+    taskslist.map((task, index) => {
+      return { name: task.name, id: index };
+    })
+  );
   return (
     <>
       <div className="container">
-        {tasks.map((task, index) => (
-          <TaskCard id={index} task={task}></TaskCard>
+        {taskslist.map((task, index) => (
+          <TaskCard key="2" task={task} />
         ))}
       </div>
     </>
   );
 }
-function TaskCard({index, task }) {
-  return (
 
-      <div  className="task-card">taskcard</div>
-    
+function TaskCard({ key, task }) {
+  console.log(key, typeof key);
+  return (
+    <div className="task-card">
+      <h4>{task.name}</h4>
+      <p>{task.desc}</p>
+    </div>
   );
 }

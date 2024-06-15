@@ -9,29 +9,46 @@
   gap: 20px;
   justify-content: space-evenly;
 }
-.container{
+h3 {
+  margin-left: 70px;
+}
 
+.container {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  gap:20px;
-  padding:2rem;
+  gap: 20px;
+  padding: 2rem;
   background-color: gray;
-  
 }
-.task-card{
+.task-card {
   width: 250px;
-  height: 300px;
-background-color: aquamarine;
-color:rgb(4, 64, 44);
+  height: 200px;
+  background-color: rgb(217, 240, 159);
+  color: rgb(4, 64, 44);
+  padding: 25px;
+}
+#status-filter{
+  padding:5px 15px;
+  border:solid 1px white;
+  border-radius: 10px;
+  margin: 0 70px 0 20px;
+  background-color: rgba(247, 68, 74, 0.814);
+  color: rgb(237, 245, 245);
+}
+input {
+  width: 400px;
+  border: solid 1px rgb(8, 163, 135);
+  border-radius: 5px;
+  padding:0   10px;
 }
 #tasks-header {
-  padding: 1rem;
+  padding: 0.5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: rgb(3, 115, 67);
+  color: rgb(8, 163, 135);
   background-color: black;
 }
 #btn-add-task {
@@ -43,7 +60,7 @@ h2 {
   font-size: 3.2em;
   line-height: 1.1;
   text-align: center;
-  color: rgb(7, 164, 104);
+  color: rgb(8, 163, 135);
   background-color: black;
   padding: 1rem;
   margin: 0;
