@@ -24,7 +24,7 @@ a:hover {
 
 body {
   margin: 0;
-  background-color: gray;
+  background-color: rgb(17, 16, 16);
   /* display: flex;
   place-items: center;
   min-width: 320px;
