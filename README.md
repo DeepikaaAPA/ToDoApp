@@ -1,8 +1,11 @@
-# React + Vite
+This is a ToDo App where users can do the following
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1.Create Todo Task with task name , Description & status
 
-Currently, two official plugins are available:
+2.By default status adds as not completed for created todo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+3. edit and Delete the tasks through Edit and Delete buttons.
+
+4.when Status button is clicked, dropdown filter to change the status to completed or pending is shown,
+
+5.Filter the tasks based on status => completed , pending or all.
