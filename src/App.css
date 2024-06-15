@@ -29,7 +29,7 @@ h3 {
   color: rgb(4, 64, 44);
   padding: 25px;
 }
-#status-filter{
+select,#status-filter{
   padding:5px 15px;
   border:solid 1px white;
   border-radius: 10px;
