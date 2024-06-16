@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function TaskCard({ index, task }) {
+export function TaskCard({ index, task, setTasksList, tasksList }) {
   const bgcolor = task.status == "Completed" ? "green" : "orange";
   let [statusBg, setStatusBg] = useState(bgcolor);
 
@@ -37,8 +37,17 @@ export function TaskCard({ index, task }) {
 
       <br></br>
       <br></br>
-      <button className="btn">Edit</button>
-      <button className="btn">Delete</button>
+      <button className="btn" onClick={() => {}}>
+        Edit
+      </button>
+      <button
+        className="btn"
+        onClick={() => {
+          setTasksList(tasksList.filter((t) => t.name != task.name));
+        }}
+      >
+        Delete
+      </button>
     </div>
   );
 }

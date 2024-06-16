@@ -8,7 +8,7 @@ export function Tasks({ tasksList, setTasksList }) {
         tasksList={tasksList}
         setTasksList={setTasksList}
       ></TaskHeader>
-      <TaskList tasksList={tasksList}></TaskList>
+      <TaskList tasksList={tasksList} setTasksList={setTasksList}></TaskList>
     </>
   );
 }
