@@ -34,6 +34,11 @@ export function TaskCard({ index, task }) {
           </>
         )}
       </select>
+
+      <br></br>
+      <br></br>
+      <button className="btn">Edit</button>
+      <button className="btn">Delete</button>
     </div>
   );
 }

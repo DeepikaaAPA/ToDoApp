@@ -4,8 +4,11 @@ import { TaskList } from "./TaskList";
 export function Tasks({ tasksList, setTasksList }) {
   return (
     <>
-      <TaskHeader></TaskHeader>
-      <TaskList tasksList={tasksList} setTasksList={setTasksList}></TaskList>
+      <TaskHeader
+        tasksList={tasksList}
+        setTasksList={setTasksList}
+      ></TaskHeader>
+      <TaskList tasksList={tasksList}></TaskList>
     </>
   );
 }

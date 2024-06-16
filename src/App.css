@@ -24,10 +24,10 @@ h3 {
 }
 .task-card {
   width: 250px;
-  height: 200px;
+  height: 250px;
   background-color: rgb(217, 240, 159);
   color: rgb(4, 64, 44);
-  padding: 25px;
+  padding: 15px;
 }
 select,#status-filter{
   padding:5px 15px;
@@ -36,6 +36,9 @@ select,#status-filter{
   margin: 0 70px 0 20px;
   background-color: rgba(247, 68, 74, 0.814);
   color: rgb(237, 245, 245);
+}
+select{
+  margin:0;
 }
 input {
   width: 400px;
@@ -51,10 +54,12 @@ input {
   color: rgb(8, 163, 135);
   background-color: black;
 }
-#btn-add-task {
+.btn  {
   color: white;
   background-color: rgb(8, 163, 135);
   border-radius: 10px;
+  margin:0 10px;
+  padding:10px;
 }
 h2 {
   font-size: 3.2em;
@@ -65,8 +70,14 @@ h2 {
   padding: 1rem;
   margin: 0;
 }
-
-.logo {
+a{
+  cursor: pointer;
+}
+a:hover{
+  background-color: rgb(49, 151, 132); 
+  color:white !important;
+}
+/* .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
@@ -92,8 +103,10 @@ h2 {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
-}
+} */
 
-.card {
-  padding: 2em;
+
+h4
+{
+margin-top :10px;
 }
