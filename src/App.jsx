@@ -4,8 +4,8 @@ import { Form } from "./Components/Form";
 import { Tasks } from "./Components/Tasks";
 import { useState } from "react";
 let INITIALTASKLIST = [
-  { name: "Planting", desc: "plan tseeds ", status: "Completed" },
-  { name: "Mopping", desc: "mop the floors ", status: "Pending" },
+  { name: "Planting", desc: "plantseeds ", status: "Completed" },
+  { name: "Mopping", desc: "mopthefloors ", status: "Pending" },
   {
     name: "Buy groceries",
     desc: "go to grocers and buy veggies ",
