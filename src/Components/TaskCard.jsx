@@ -6,7 +6,8 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
   console.log(index, task.status);
   let color = task.status == "Completed" ? "green" : "orange";
   const [statusBg, setStatusBg] = useState(color);
-const [        EditBtnText,setEditButtonText]=useState("Edit")
+  const [EditBtnText, setEditButtonText] = useState("Edit");
+  const [editInput, setEditInput] = useState("");
   // console.log(color, statusBg);
   useEffect(() => {
     setStatusBg(color);
@@ -20,11 +21,7 @@ const [        EditBtnText,setEditButtonText]=useState("Edit")
         {task.name}
       </h4>
       <p>
-        {task.status}
-        <br></br>
-        {statusBg}
-        <br></br>
-        {task.desc}
+          {task.desc}
       </p>
       <select
         onChange={(event) => {
@@ -63,7 +60,10 @@ const [        EditBtnText,setEditButtonText]=useState("Edit")
       <button
         className="btn"
         onClick={() => {
-          setEditButtonText(editMode?"Edit":"Save")
+          if (editMode) {
+            console.log(editInputText);
+          }
+          setEditButtonText(editMode ? "Edit" : "Save");
           setEditMode(!editMode);
         }}
       >
