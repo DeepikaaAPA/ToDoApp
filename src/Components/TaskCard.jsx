@@ -1,9 +1,17 @@
 import { useState } from "react";
+import { useEffect } from "react";
 
 export function TaskCard({ index, task, setTasksList, tasksList }) {
-  const bgcolor = task.status == "Completed" ? "green" : "orange";
-  let [statusBg, setStatusBg] = useState(bgcolor);
-
+  const [editMode, setEditMode] = useState(false);
+  console.log(index, task.status);
+  let color = task.status == "Completed" ? "green" : "orange";
+  const [statusBg, setStatusBg] = useState(color);
+const [        EditBtnText,setEditButtonText]=useState("Edit")
+  // console.log(color, statusBg);
+  useEffect(() => {
+    setStatusBg(color);
+  }, [color]);
+  // console.log(task.status, statusBg);
   return (
     <div className="task-card">
       <h4>
@@ -11,12 +19,27 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
         {" )  "}
         {task.name}
       </h4>
-      <p>{task.desc}</p>
+      <p>
+        {task.status}
+        <br></br>
+        {statusBg}
+        <br></br>
+        {task.desc}
+      </p>
       <select
         onChange={(event) => {
+          // console.log("changed");
           setStatusBg(event.target.value == "Completed" ? "green" : "orange");
+          setTasksList(
+            tasksList.map((t) => {
+              t.name == task.name && (t.status = event.target.value);
+              return t;
+            })
+          );
         }}
-        style={{ backgroundColor: statusBg }}
+        style={{
+          backgroundColor: statusBg,
+        }}
       >
         {task.status == "Completed" ? (
           <>
@@ -34,15 +57,22 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
           </>
         )}
       </select>
-
       <br></br>
       <br></br>
-      <button className="btn" onClick={() => {}}>
-        Edit
+      Edit :<input readOnly={!editMode} style={{ width: "50px" }}></input>
+      <button
+        className="btn"
+        onClick={() => {
+          setEditButtonText(editMode?"Edit":"Save")
+          setEditMode(!editMode);
+        }}
+      >
+        {EditBtnText}
       </button>
       <button
         className="btn"
         onClick={() => {
+          // console.log(statusBg);
           setTasksList(tasksList.filter((t) => t.name != task.name));
         }}
       >

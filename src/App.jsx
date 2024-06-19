@@ -4,7 +4,7 @@ import { Form } from "./Components/Form";
 import { Tasks } from "./Components/Tasks";
 import { useState } from "react";
 let INITIALTASKLIST = [
-  { name: "Planting", desc: "plan tseeds ", status: "Pending" },
+  { name: "Planting", desc: "plan tseeds ", status: "Completed" },
   { name: "Mopping", desc: "mop the floors ", status: "Pending" },
   {
     name: "Buy groceries",
@@ -14,7 +14,7 @@ let INITIALTASKLIST = [
   {
     name: "Baking",
     desc: "Bake cookies and brownies for snacks ",
-    status: "Completed",
+    status: "Pending",
   },
   { name: "Ironing", desc: "Press uniforms and formals ", status: "Completed" },
 ];
@@ -25,7 +25,7 @@ function App() {
   return (
     <>
       <Header />
-      <Form  tasksList={tasksList} setTasksList={setTasksList} />
+      <Form tasksList={tasksList} setTasksList={setTasksList} />
       <Tasks tasksList={tasksList} setTasksList={setTasksList}></Tasks>
     </>
   );
