@@ -8,6 +8,7 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
   const [statusBg, setStatusBg] = useState(color);
   const [EditBtnText, setEditButtonText] = useState("Edit");
   const [editInput, setEditInput] = useState("");
+  const initialdesc = task.desc;
   // console.log(color, statusBg);
   useEffect(() => {
     setStatusBg(color);
@@ -20,9 +21,16 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
         {" )  "}
         {task.name}
       </h4>
-      <p>
-          {task.desc}
-      </p>
+      <p>{task.desc}</p>
+      Edit :
+      <input
+        onChange={(event) => {
+          setEditInput(event.target.value);
+        }}
+        readOnly={!editMode}
+        style={{ width: "150px", height: "30px" }}
+        defaultValue={initialdesc}
+      ></input>
       <select
         onChange={(event) => {
           // console.log("changed");
@@ -56,12 +64,11 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
       </select>
       <br></br>
       <br></br>
-      Edit :<input readOnly={!editMode} style={{ width: "50px" }}></input>
       <button
         className="btn"
         onClick={() => {
           if (editMode) {
-            console.log(editInputText);
+            console.log(editInput);
           }
           setEditButtonText(editMode ? "Edit" : "Save");
           setEditMode(!editMode);
