@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useEffect } from "react";
 
 export function TaskCard({ index, task, setTasksList, tasksList }) {
@@ -9,6 +9,7 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
   const [EditBtnText, setEditButtonText] = useState("Edit");
   const [editInput, setEditInput] = useState("");
   const initialdesc = task.desc;
+  const descref = useRef(null);
   // console.log(color, statusBg);
   useEffect(() => {
     setStatusBg(color);
@@ -21,9 +22,10 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
         {" )  "}
         {task.name}
       </h4>
-      <p>{task.desc}</p>
-      Edit :
+
       <input
+        ref={descref}
+        className="editdesc"
         onChange={(event) => {
           setEditInput(event.target.value);
         }}
@@ -69,6 +71,19 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
         onClick={() => {
           if (editMode) {
             console.log(editInput);
+            // setTasksList(
+            //   tasksList.map((t) => {
+            //     t.name == task.name
+            //       ? {
+            //           name: task.name,
+            //           desc: descref.current.value,
+            //           status: task.status,
+            //         }
+            //       : t;
+            //   })
+            // );
+          } else {
+            descref.current.focus();
           }
           setEditButtonText(editMode ? "Edit" : "Save");
           setEditMode(!editMode);
