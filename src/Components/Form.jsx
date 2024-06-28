@@ -4,8 +4,8 @@ export function Form({ setTasksList }) {
   const [name, setName] = useState("Sample");
   const [desc, setDesc] = useState("Desc");
   const [status, setStatus] = useState("Pending");
-  const [newTask, setNewTask] = useState({ name, desc, status });
-  console.log("inside form", name, desc, status);
+
+ // console.log("inside form", name, desc, status);
 
   return (
     <div id="task-form">
