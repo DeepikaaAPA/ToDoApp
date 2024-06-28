@@ -3,12 +3,12 @@ import { useEffect } from "react";
 
 export function TaskCard({ index, task, setTasksList, tasksList }) {
   const [editMode, setEditMode] = useState(false);
-  console.log(index, task.status);
+  console.log(index, task.status, task.desc);
   // let color = task.status == "Completed" ? "green" : "orange";
   // const [statusBg, setStatusBg] = useState(color);
   const [EditBtnText, setEditButtonText] = useState("Edit");
-  const [editInput, setEditInput] = useState("");
-  const initialdesc = task.desc;
+  const [editInput, setEditInput] = useState(task.desc);
+  const initialdesc = editInput ? task.desc : "";
   const descref = useRef(null);
   // console.log(color, statusBg);
   // useEffect(() => {
@@ -23,15 +23,15 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
         {task.name}
       </h4>
       {task.desc}
+      <br></br>
       <input
         ref={descref}
         className="editdesc"
-        onChange={(event) => {
+        onBlur={(event) => {
           setEditInput(event.target.value);
         }}
         readOnly={!editMode}
         style={{ width: "150px", height: "30px" }}
-        defaultValue={initialdesc}
       ></input>
       <select
         onChange={(event) => {
@@ -70,20 +70,19 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
       <button
         className="btn"
         onClick={() => {
+          console.log(descref.defaultValue);
           if (editMode) {
             console.log(editInput);
-            // setTasksList(
-            //   tasksList.map((t) => {
-            //     t.name == task.name
-            //       ? {
-            //           name: task.name,
-            //           desc: descref.current.value,
-            //           status: task.status,
-            //         }
-            //       : t;
-            //   })
-            // );
+            setTasksList(
+              tasksList.map((t) => {
+                t.name == task.name && (t.desc = editInput);
+                return t;
+              })
+            );
+            setEditInput("XXX");
           } else {
+            //descref.style.display = "block";
+            descref.current.value = initialdesc;
             descref.current.focus();
           }
           setEditButtonText(editMode ? "Edit" : "Save");
