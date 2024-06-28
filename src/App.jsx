@@ -25,7 +25,7 @@ function App() {
   return (
     <>
       <Header />
-      <Form tasksList={tasksList} setTasksList={setTasksList} />
+      <Form setTasksList={setTasksList} />
       <Tasks tasksList={tasksList} setTasksList={setTasksList}></Tasks>
     </>
   );

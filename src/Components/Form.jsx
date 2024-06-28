@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function Form({ tasksList, setTasksList }) {
+export function Form({ setTasksList }) {
   const [name, setName] = useState("Sample");
   const [desc, setDesc] = useState("Desc");
   const [status, setStatus] = useState("Pending");
@@ -31,7 +31,8 @@ export function Form({ tasksList, setTasksList }) {
       <button
         className="btn"
         onClick={() => {
-          setTasksList([...tasksList, { name, desc, status }]);
+          setTasksList((prev) => [...prev, { name, desc, status }]);
+          // setTasksList([...tasksList, { name, desc, status }]);
         }}
       >
         Add
