@@ -4,16 +4,16 @@ import { useEffect } from "react";
 export function TaskCard({ index, task, setTasksList, tasksList }) {
   const [editMode, setEditMode] = useState(false);
   console.log(index, task.status);
-  let color = task.status == "Completed" ? "green" : "orange";
-  const [statusBg, setStatusBg] = useState(color);
+  // let color = task.status == "Completed" ? "green" : "orange";
+  // const [statusBg, setStatusBg] = useState(color);
   const [EditBtnText, setEditButtonText] = useState("Edit");
   const [editInput, setEditInput] = useState("");
   const initialdesc = task.desc;
   const descref = useRef(null);
   // console.log(color, statusBg);
-  useEffect(() => {
-    setStatusBg(color);
-  }, [color]);
+  // useEffect(() => {
+  //   setStatusBg(color);
+  // }, [color]);
   // console.log(task.status, statusBg);
   return (
     <div className="task-card">
@@ -22,7 +22,7 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
         {" )  "}
         {task.name}
       </h4>
-
+      {task.desc}
       <input
         ref={descref}
         className="editdesc"
@@ -35,8 +35,8 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
       ></input>
       <select
         onChange={(event) => {
-          // console.log("changed");
-          setStatusBg(event.target.value == "Completed" ? "green" : "orange");
+          // // console.log("changed");
+          // setStatusBg(event.target.value == "Completed" ? "green" : "orange");
           setTasksList(
             tasksList.map((t) => {
               t.name == task.name && (t.status = event.target.value);
@@ -45,7 +45,8 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
           );
         }}
         style={{
-          backgroundColor: statusBg,
+          // backgroundColor: statusBg,
+          backgroundColor: task.status == "Completed" ? "green" : "orange",
         }}
       >
         {task.status == "Completed" ? (
