@@ -5,8 +5,7 @@ export function Tasks({ tasksList, setTasksList }) {
   return (
     <>
       <TaskHeader
-        tasksList={tasksList}
-        setTasksList={setTasksList}
+       
       ></TaskHeader>
       <TaskList tasksList={tasksList} setTasksList={setTasksList}></TaskList>
     </>
