@@ -4,17 +4,38 @@ import { useEffect } from "react";
 export function TaskCard({ index, task, setTasksList, tasksList }) {
   const [editMode, setEditMode] = useState(false);
   console.log(index, task.status, task.desc);
-  // let color = task.status == "Completed" ? "green" : "orange";
-  // const [statusBg, setStatusBg] = useState(color);
   const [EditBtnText, setEditButtonText] = useState("Edit");
   const [editInput, setEditInput] = useState(task.desc);
-  const initialdesc = editInput ? task.desc : "";
   const descref = useRef(null);
   // console.log(color, statusBg);
   // useEffect(() => {
   //   setStatusBg(color);
   // }, [color]);
   // console.log(task.status, statusBg);
+  const handleChangeStatus = (event) => {
+    // // console.log("changed");
+    // setStatusBg(event.target.value == "Completed" ? "green" : "orange");
+    setTasksList(
+      tasksList.map((t) => {
+        t.name == task.name && (t.status = event.target.value);
+        return t;
+      })
+    );
+  };
+  const handleEdit = () => {
+    //console.log(descref.defaultValue);
+    if (editMode) {
+      console.log(editInput);
+      setTasksList(
+        tasksList.map((t, i) => (index === i ? { ...t, desc: editInput } : t))
+      );
+    } else {
+      // descref.current.value = initialdesc;
+      descref.current.focus();
+    }
+    // setEditButtonText(editMode ? "Edit" : "Save");
+    setEditMode(!editMode);
+  };
   return (
     <div className="task-card">
       <h4>
@@ -22,74 +43,40 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
         {" )  "}
         {task.name}
       </h4>
+      {editInput}
+      <br></br>
       {task.desc}
       <br></br>
       <input
         ref={descref}
         className="editdesc"
-        onBlur={(event) => {
+        onChange={(event) => {
           setEditInput(event.target.value);
+          setTasksList(
+            tasksList.map((t) =>
+              t.name===task.name? { ...t, desc: editInput } : t
+            )
+          );
         }}
-        readOnly={!editMode}
+        value={editInput}
+        // defaultValue={task.desc}
+        //readOnly={!editMode}
         style={{ width: "150px", height: "30px" }}
       ></input>
       <select
-        onChange={(event) => {
-          // // console.log("changed");
-          // setStatusBg(event.target.value == "Completed" ? "green" : "orange");
-          setTasksList(
-            tasksList.map((t) => {
-              t.name == task.name && (t.status = event.target.value);
-              return t;
-            })
-          );
-        }}
+        value={task.status}
+        onChange={handleChangeStatus}
         style={{
-          // backgroundColor: statusBg,
-          backgroundColor: task.status == "Completed" ? "green" : "orange",
+          backgroundColor: task.status === "Completed" ? "green" : "orange",
         }}
       >
-        {task.status == "Completed" ? (
-          <>
-            <option value="Completed" selected>
-              Completed
-            </option>
-            <option value="Pending">Pending</option>
-          </>
-        ) : (
-          <>
-            <option value="Completed">Completed</option>
-            <option value="Pending" selected>
-              Pending
-            </option>
-          </>
-        )}
+        <option value="Completed">Completed</option>
+        <option value="Pending">Pending</option>
       </select>
       <br></br>
       <br></br>
-      <button
-        className="btn"
-        onClick={() => {
-          console.log(descref.defaultValue);
-          if (editMode) {
-            console.log(editInput);
-            setTasksList(
-              tasksList.map((t) => {
-                t.name == task.name && (t.desc = editInput);
-                return t;
-              })
-            );
-            setEditInput("XXX");
-          } else {
-            //descref.style.display = "block";
-            descref.current.value = initialdesc;
-            descref.current.focus();
-          }
-          setEditButtonText(editMode ? "Edit" : "Save");
-          setEditMode(!editMode);
-        }}
-      >
-        {EditBtnText}
+      <button className="btn" onClick={handleEdit}>
+        {editMode ? "Save" : "Edit"}
       </button>
       <button
         className="btn"

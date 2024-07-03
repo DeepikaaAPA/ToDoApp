@@ -5,7 +5,7 @@ export function Form({ setTasksList }) {
   const [desc, setDesc] = useState("Desc");
   const [status, setStatus] = useState("Pending");
 
- // console.log("inside form", name, desc, status);
+  // console.log("inside form", name, desc, status);
 
   return (
     <div id="task-form">
@@ -32,7 +32,6 @@ export function Form({ setTasksList }) {
         className="btn"
         onClick={() => {
           setTasksList((prev) => [...prev, { name, desc, status }]);
-          // setTasksList([...tasksList, { name, desc, status }]);
         }}
       >
         Add

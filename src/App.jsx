@@ -5,7 +5,7 @@ import { Tasks } from "./Components/Tasks";
 import { useState } from "react";
 let INITIALTASKLIST = [
   { name: "Planting", desc: "plantseeds ", status: "Completed" },
-  { name: "Mopping", desc: "mopthefloors ", status: "Pending" },
+  { name: "Pay school fees", desc: "Pay the fee ", status: "Pending" },
   {
     name: "Buy groceries",
     desc: "go to grocers and buy veggies ",
