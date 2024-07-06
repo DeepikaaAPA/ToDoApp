@@ -3,21 +3,14 @@ import { useEffect } from "react";
 
 export function TaskCard({ index, task, setTasksList, tasksList }) {
   const [editMode, setEditMode] = useState(false);
-  console.log(index, task.status, task.desc);
-  const [EditBtnText, setEditButtonText] = useState("Edit");
-  const [editInput, setEditInput] = useState(task.desc);
+  console.log(index, task.name, task.status, task.desc);
+  // const [editInput, setEditInput] = useState(task.desc);
   const descref = useRef(null);
-  // console.log(color, statusBg);
-  // useEffect(() => {
-  //   setStatusBg(color);
-  // }, [color]);
-  // console.log(task.status, statusBg);
+
   const handleChangeStatus = (event) => {
-    // // console.log("changed");
-    // setStatusBg(event.target.value == "Completed" ? "green" : "orange");
-    setTasksList(
-      tasksList.map((t) => {
-        t.name == task.name && (t.status = event.target.value);
+    setTasksList((prev) =>
+      prev.map((t) => {
+        t.name === task.name && (t.status = event.target.value);
         return t;
       })
     );
@@ -25,15 +18,18 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
   const handleEdit = () => {
     //console.log(descref.defaultValue);
     if (editMode) {
-      console.log(editInput);
-      setTasksList(
-        tasksList.map((t, i) => (index === i ? { ...t, desc: editInput } : t))
+      // console.log(editInput);
+      // setEditInput(descref.current.value);
+      setTasksList((prev) =>
+        prev.map((t) =>
+          t.name === task.name ? { ...t, desc: descref.current.value } : t
+        )
       );
     } else {
       // descref.current.value = initialdesc;
       descref.current.focus();
     }
-    // setEditButtonText(editMode ? "Edit" : "Save");
+
     setEditMode(!editMode);
   };
   return (
@@ -43,26 +39,19 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
         {" )  "}
         {task.name}
       </h4>
-      {editInput}
-      <br></br>
       {task.desc}
+      {"--"}
       <br></br>
       <input
+        id="edit"
         ref={descref}
         className="editdesc"
-        onChange={(event) => {
-          setEditInput(event.target.value);
-          setTasksList(
-            tasksList.map((t) =>
-              t.name===task.name? { ...t, desc: editInput } : t
-            )
-          );
+        onChange={() => {
+          console.log("changed");
         }}
-        value={editInput}
-        // defaultValue={task.desc}
-        //readOnly={!editMode}
-        style={{ width: "150px", height: "30px" }}
+        defaultValue="{task.desc}"
       ></input>
+      <br></br>
       <select
         value={task.status}
         onChange={handleChangeStatus}
@@ -73,7 +62,7 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
         <option value="Completed">Completed</option>
         <option value="Pending">Pending</option>
       </select>
-      <br></br>
+
       <br></br>
       <button className="btn" onClick={handleEdit}>
         {editMode ? "Save" : "Edit"}

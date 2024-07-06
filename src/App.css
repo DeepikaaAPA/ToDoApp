@@ -52,6 +52,10 @@ input {
   color: inherit;
   border: none;
 }
+input#edit {
+  width: 150px;
+  height: 30px;
+}
 #tasks-header {
   padding: 0.5rem;
   display: flex;
