@@ -28,6 +28,8 @@ export function Form({ setTasksList }) {
         className="btn add-btn"
         onClick={() => {
           setTasksList((prev) => [...prev, { name, desc, status: "Pending" }]);
+          setName("");
+          setDesc("");
         }}
       >
         Add Task
