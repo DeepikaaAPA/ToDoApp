@@ -8,7 +8,7 @@
   flex-direction: row;
   gap: 20px;
   justify-content: space-evenly;
-  background-color: rgb(42, 41, 41);
+  background-color: rgb(75, 73, 73);
 }
 
 h3 {
@@ -84,13 +84,7 @@ h2 {
   padding: 1rem;
   margin: 0;
 }
-a {
-  cursor: pointer;
-}
-a:hover {
-  background-color: rgb(49, 151, 132);
-  color: white !important;
-}
+
 p,
 select {
   margin-left: 20px;
