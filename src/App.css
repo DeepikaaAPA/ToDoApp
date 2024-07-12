@@ -3,12 +3,14 @@
 }
 #task-form {
   padding: 2rem;
-  margin: 1rem;
+  margin: 1rem 100px;
   display: flex;
   flex-direction: row;
   gap: 20px;
   justify-content: space-evenly;
+  background-color: rgb(42, 41, 41);
 }
+
 h3 {
   margin-left: 70px;
 }
@@ -58,7 +60,7 @@ textarea {
 }
 
 #tasks-header {
-  padding: 0.5rem;
+  padding: 0.5rem 100px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
