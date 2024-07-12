@@ -25,8 +25,8 @@ export function Tasks({ tasksList, setTasksList }) {
         </div>
       </div>
       <div className="container">
-        {tasksList
-          .filter((task) => filter == "All" || task.status == filter)
+
+        {tasksList?.filter((task) => filter == "All" || task.status == filter)
           .map((task, index) => (
             <TaskCard
               key={index}

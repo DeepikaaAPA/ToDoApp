@@ -1,12 +1,14 @@
 import { useRef, useState } from "react";
 import { useEffect } from "react";
 
-export function TaskCard({ index, task, setTasksList, tasksList }) {
+export function TaskCard({ index, task, setTasksList }) {
+  console.log("Task card loaded");
   const [editMode, setEditMode] = useState(false);
-  console.log(index, task.name, task.status, task.desc);
-  // const [editInput, setEditInput] = useState(task.desc);
   const descref = useRef(null);
-
+  useEffect(() => {
+    console.log("use effect", task.name, task.status, descref.current.value);
+    descref.current.value = task.desc;
+  });
   const handleChangeStatus = (event) => {
     setTasksList((prev) =>
       prev.map((t) => {
@@ -16,17 +18,14 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
     );
   };
   const handleEdit = () => {
-    //console.log(descref.defaultValue);
     if (editMode) {
-      // console.log(editInput);
-      // setEditInput(descref.current.value);
       setTasksList((prev) =>
         prev.map((t) =>
           t.name === task.name ? { ...t, desc: descref.current.value } : t
         )
       );
     } else {
-      // descref.current.value = initialdesc;
+      descref.current.value = task.desc;
       descref.current.focus();
     }
 
@@ -34,23 +33,18 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
   };
   return (
     <div className="task-card">
-      <h4>
-        {index + 1}
-        {" )  "}
-        {task.name}
-      </h4>
-      {task.desc}
-      {"--"}
-      <br></br>
-      <input
+      <h4>{index + 1 + " )  " + task.name}</h4>
+
+      <textarea
+        rows={8}
+        cols={10}
         id="edit"
         ref={descref}
         className="editdesc"
-        onChange={() => {
-          console.log("changed");
-        }}
-        defaultValue="{task.desc}"
-      ></input>
+        defaultValue={task.desc}
+        readOnly={!editMode}
+      ></textarea>
+      <br></br>
       <br></br>
       <select
         value={task.status}
@@ -64,14 +58,14 @@ export function TaskCard({ index, task, setTasksList, tasksList }) {
       </select>
 
       <br></br>
+      <br></br>
       <button className="btn" onClick={handleEdit}>
         {editMode ? "Save" : "Edit"}
       </button>
       <button
         className="btn"
         onClick={() => {
-          // console.log(statusBg);
-          setTasksList(tasksList.filter((t) => t.name != task.name));
+          setTasksList((prev) => prev.filter((t) => t.name != task.name));
         }}
       >
         Delete

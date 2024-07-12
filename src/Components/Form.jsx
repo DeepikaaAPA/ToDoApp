@@ -1,12 +1,8 @@
 import { useState } from "react";
 
 export function Form({ setTasksList }) {
-  const [name, setName] = useState("Sample");
-  const [desc, setDesc] = useState("Desc");
-  const [status, setStatus] = useState("Pending");
-
-  // console.log("inside form", name, desc, status);
-
+  const [name, setName] = useState("Task Name");
+  const [desc, setDesc] = useState("Task description");
   return (
     <div id="task-form">
       <input
@@ -29,12 +25,12 @@ export function Form({ setTasksList }) {
       ></input>
 
       <button
-        className="btn"
+        className="btn add-btn"
         onClick={() => {
-          setTasksList((prev) => [...prev, { name, desc, status }]);
+          setTasksList((prev) => [...prev, { name, desc, status: "Pending" }]);
         }}
       >
-        Add
+        Add Task
       </button>
     </div>
   );

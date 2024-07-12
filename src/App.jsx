@@ -3,8 +3,8 @@ import { Header } from "./Components/Header";
 import { Form } from "./Components/Form";
 import { Tasks } from "./Components/Tasks";
 import { useState } from "react";
-let INITIALTASKLIST = [
-  { name: "Planting", desc: "plantseeds ", status: "Completed" },
+let INITIALTASKLIST = [];
+/*  { name: "Planting", desc: "plantseeds ", status: "Completed" },
   { name: "Pay school fees", desc: "Pay the fee ", status: "Pending" },
   {
     name: "Buy groceries",
@@ -16,9 +16,7 @@ let INITIALTASKLIST = [
     desc: "Bake cookies and brownies for snacks ",
     status: "Pending",
   },
-  { name: "Ironing", desc: "Press uniforms and formals ", status: "Completed" },
-];
-
+  { name: "Ironing", desc: "Press uniforms and formals ", status: "Completed" } */
 function App() {
   let [tasksList, setTasksList] = useState(INITIALTASKLIST);
 
